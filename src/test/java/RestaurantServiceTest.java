@@ -35,8 +35,29 @@ class RestaurantServiceTest {
          assertThrows(restaurantNotFoundException.class,()->service.findRestaurantByName("Hawai Best"));
     }
     //<<<<<<<<<<<<<<<<<<<<SEARCHING>>>>>>>>>>>>>>>>>>>>>>>>>>
+    
+     @Test
+    public void the_total_cost_of_the_menu_displayed_returns_true()
+    {
+    	Item item1=new Item("Vegetable lasagne", 269);
+    	Item item2=new Item("Sweet corn soup",119);
+
+    	 List<Item> items = new ArrayList<>();
+    	 
+    	 items.add(item2);
+    	 items.add(item1);
+    	 assertEquals(service.findTotalCost(items),"388");
+    }
 
 
+    @Test
+    public void the_total_cost_of_the_menu_displayed_returns_false()
+    {
+    	Item item1=new Item("Vegetable", 290);
+    	 List<Item> items = new ArrayList<>();
+    	 items.add(item1);
+    	 assertEquals(service.findTotalCost(items),"Failed to add");
+    }
 
 
     //>>>>>>>>>>>>>>>>>>>>>>ADMIN: ADDING & REMOVING RESTAURANTS<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
