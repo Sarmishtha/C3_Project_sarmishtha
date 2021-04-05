@@ -13,7 +13,17 @@ public class RestaurantService {
     	 throw new restaurantNotFoundException(restaurantName);
     }
 
-
+  public String findTotalCost(List<Item> items)
+    {
+    	Integer total=0;
+    	 for(Item item: items) {
+    		 total=total+item.getPrice();
+    	 }
+    	 if(total==0)
+    		 return "Failed to add";
+    	return total.toString();
+    	
+    }
     public Restaurant addRestaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
         Restaurant newRestaurant = new Restaurant(name, location, openingTime, closingTime);
         restaurants.add(newRestaurant);
